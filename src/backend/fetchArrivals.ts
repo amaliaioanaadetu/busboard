@@ -41,11 +41,9 @@ export async function fetchArrivalsByPostcode(postcode: string) {
     try {
         const postcodeInfo = await axios.get(`https://api.postcodes.io/postcodes/${postcode}`);
         const { latitude, longitude } = postcodeInfo.data.result;
-        console.log(latitude, longitude);
 
         const stopTypes = await axios.get(`https://api.tfl.gov.uk/StopPoint/meta/stoptypes`);
         const stopTypesString = stopTypes.data.join(',');
-        console.log(stopTypesString)
 
         const response = await axios.get<ArrivalPrediction[]>(`https://api.tfl.gov.uk/StopPoint/?lat=${latitude}&lon=${longitude}&stopTypes=${stopTypesString}`);
         const nearestStopPoints = response.data.stopPoints.slice(0, 2);
