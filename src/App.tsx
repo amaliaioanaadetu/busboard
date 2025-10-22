@@ -25,29 +25,31 @@ function App() {
         >BusBoard</h1>
 
           <div className="flex gap-2 mb-4">
-          <input
+            <input
               type="text"
               value={postCode}
               onChange={(e) => setPostCode(e.target.value)}
               placeholder="Enter postcode"
               className="px-3 py-2 border rounded"
-          />
+            />
 
-          <button onClick={handleButtonClick} disabled={!postCode || loading}>
+            <button onClick={handleButtonClick} disabled={!postCode || loading}>
               {loading ? "Loading..." : "Check"}
-          </button>
-
+            </button>
           </div>
 
-          {loading ? (
+          {
+              loading ? (
               <p className="mt-4 text-gray-600">Loading...</p>
-          ) : (
+            ) : (
               arrivalsData && (
                   <pre className="mt-4 p-4 bg-white rounded shadow w-3/4">
-      {arrivalsData}
-    </pre>
+                      {arrivalsData}
+                  </pre>
               )
-          )}
+            )
+          }
+
           </>
   )
 }

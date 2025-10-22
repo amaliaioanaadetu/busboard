@@ -1,23 +1,6 @@
 import axios from "axios";
-
-interface ArrivalPrediction {
-    id: string;
-    lineId: string;
-    lineName: string;
-    destinationName: string;
-    timeToStation: number;
-    expectedArrival: string;
-    stationName: string;
-    platformName: string;
-    direction: string;
-    modeName: string;
-}
-
-interface BusArrival {
-    lineName: string;
-    destinationName: string;
-    timeToStationMinutes: number;
-}
+import type {ArrivalPrediction} from "../interfaces/ArrivalPrediction.ts";
+import type {BusArrival} from "../interfaces/BusArrival.ts";
 
 
 export async function fetchArrivalsByStopCode(stopCode: string) {
